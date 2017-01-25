@@ -1,0 +1,47 @@
+<div class="container" [ngClass]="{'fadeIn': loading }">
+
+    <div class="loader" *ngIf="loading">
+        <i class="fa fa-refresh  fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+        <span class="sr-only">Saving. Hang tight!</span>
+    </div>
+    
+
+    <h1>Users</h1>
+    <p>
+        <a routerLink="/users/new" class="btn btn-primary">Add User</a>
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Detail
+                </th>
+                <th>
+                    Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <a [routerLink]="['/users', user.id]">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+                <td >
+                    <i (click)="deleteUser(user)" class="glyphicon glyphicon-remove clickable" style="cursor: pointer"></i>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+    
